@@ -10,7 +10,7 @@ export default class ScreenThree extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          Screen 3
+          Knight Riders
         </Text>
       </View>
     );
