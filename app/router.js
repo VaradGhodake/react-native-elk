@@ -20,7 +20,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
       screen: ScreenOne,
       navigationOptions: {
         tabBarLabel: 'First',
-        tabBarIcon: ({ tintColor }) => <Icon name="explore" type="material-icons" size={27} color={tintColor} />
+        tabBarIcon: ({ tintColor }) => <Icon name="explore" type="material-icons" size={26} color={tintColor} />
       },
     },
     'ScreenTwo': {
