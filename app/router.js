@@ -20,7 +20,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
       screen: ScreenOne,
       navigationOptions: {
         tabBarLabel: 'First',
-        tabBarIcon: ({ tintColor }) => <Icon name="textsms" type="material-icons" size={28} color={tintColor} />
+        tabBarIcon: ({ tintColor }) => <Icon name="explore" type="material-icons" size={27} color={tintColor} />
       },
     },
     'ScreenTwo': {
@@ -33,7 +33,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     'ScreenThree': {
       screen: ScreenThree,
       navigationOptions: {
-        tabBarLabel: '<i>Third</i>',
+        tabBarLabel: 'Third',
         tabBarIcon: ({ tintColor }) => <Icon name="polymer" type="material-icons" size={25} color={tintColor} />
       },
     }
@@ -41,8 +41,9 @@ const TabNavigator = createMaterialBottomTabNavigator(
   {
     initialRouteName: 'ScreenTwo',
     activeColor: '#f0edf6',
-    inactiveColor: '#3e2465',
-    barStyle: { backgroundColor: '#000000' },
+    inactiveColor: '#616A6B',
+    barStyle: { backgroundColor: '#131212' },
+    shifting: true
   }
 );
 

@@ -4,15 +4,12 @@ import {
   Text,
   View
 } from 'react-native';
+import TestCarousel from '../components/TestCarousel'
 
 export default class ScreenOne extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          Screen 1
-        </Text>
-      </View>
+      <TestCarousel />
     );
   }
 }
