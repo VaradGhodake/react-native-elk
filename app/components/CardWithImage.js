@@ -20,14 +20,16 @@ export default class CardWithImage extends Component {
     return (
       <Container style={{ 
         marginTop : 50,
-        maxHeight : 475,
-       }}>
-        <Content scrollEnabled={false}>
+        maxHeight : 550,
+       }}
+      scrollEnabled={false}
+       >
+        <Content>
           <Card>
             <CardItem cardBody>
               <Image 
                 source={{ uri: this.props.item.remote }} 
-                style={{ height: 400, width: null, flex: 1 }}/>
+                style={{ height: 475, width: null, flex: 1 }}/>
             </CardItem>
             <CardItem>
               <Left>

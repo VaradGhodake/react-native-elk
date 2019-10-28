@@ -1,32 +1,82 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { Component } from "react";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
+// import { AppLoading, Asset, Font, Icon } from "expo";
+// import AppNavigator from "./navigation/AppNavigator";
+import { Stitch, AnonymousCredential } from "mongodb-stitch-react-native-sdk";
+import HomeData from '../components/HomeData';
+import ReadData from '../components/ReadData';
 
 export default class ScreenTwo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUserId: undefined,
+      client: undefined,
+      // isLoadingComplete: false
+    };
+    this._loadClient = this._loadClient.bind(this);
+  }
+
+  componentDidMount() {
+    this._loadClient();
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          Screen 2
-        </Text>
-      </View>
-    );
+    // if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    //   return (
+    //     <AppLoading
+    //       startAsync={this._loadResourcesAsync}
+    //       onError={this._handleLoadingError}
+    //       onFinish={this._handleFinishLoading}
+    //     />
+    //   );
+    // } else {
+      return (
+        <View style={styles.container}>
+          <HomeData />
+        </View>
+      );
+    // }
+  }
+  // 
+  // _loadResourcesAsync = async () => {
+  //   return Promise.all([
+  //     Font.loadAsync({
+  //       ...Icon.Ionicons.font,
+  //       "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf")
+  //     })
+  //   ]);
+  // };
+  // 
+  // _handleLoadingError = error => {
+  //   console.warn(error);
+  // };
+  // 
+  // _handleFinishLoading = () => {
+  //   this.setState({ isLoadingComplete: true });
+  // };
+
+  _loadClient() {
+    Stitch.initializeDefaultAppClient("elk-csskj").then(client => {
+      this.setState({ client })
+      this.state.client.auth
+        .loginWithCredential(new AnonymousCredential())
+        .then(user => {
+          console.log(`Successfully logged in as user ${user.id}`);
+          this.setState({ currentUserId: user.id });
+          this.setState({ currentUserId: client.auth.user.id });
+        })
+        .catch(err => {
+          console.log(`Failed to log in anonymously: ${err}`);
+          this.setState({ currentUserId: undefined });
+        });
+    });
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    backgroundColor: "#fff"
   }
 });
